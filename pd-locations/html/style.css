@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: none;  /* Changed from flex - will be controlled by JS */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+.map-container {
+    flex: 3;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.locations-panel {
+    width: 400px;
+    background-color: rgba(25, 25, 25, 0.95);
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 100;
+    max-width: 400px;
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 300;
+    text-align: center;
+}
+
+.locations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.location-item {
+    background-color: rgba(35, 35, 35, 0.95);
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.location-item:hover {
+    background-color: rgba(45, 45, 45, 0.95);
+    transform: translateX(5px);
+}
+
+.location-item h2 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.location-item p {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.marker {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.marker:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.marker.active {
+    background-color: #2196F3;
+}
+
+.name-input-container {
+    display: none;  /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.name-input-panel {
+    background: rgba(25, 25, 25, 0.95);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 300px;
+}
+
+.name-input-panel h2 {
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.name-input-panel input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    background: rgba(35, 35, 35, 0.95);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.name-input-panel button {
+    width: 100%;
+    padding: 0.5rem;
+    background: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.name-input-panel button:hover {
+    background: #45a049;
+}

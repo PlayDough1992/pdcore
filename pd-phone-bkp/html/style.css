@@ -1,0 +1,255 @@
+#phone-container {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 300px;
+    height: 600px;
+    display: none;
+}
+
+#phone-frame {
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    border-radius: 30px;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+#phone-header {
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding: 5px 15px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 15px 15px 0 0;
+}
+
+#app-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 20px;
+    height: calc(100% - 70px);  /* 35px for status bar + 35px for bottom alignment */
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/wallpaper.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 0 0 30px 30px;
+}
+
+.app-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.app-icon:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}
+
+.app-icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.app-name {
+    color: white;
+    font-size: 12px;
+    margin-top: 5px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+#pdb-screen {
+    display: none;
+    height: calc(100% - 35px);
+    width: 100%;
+    background: #f8f9fa;
+    border-radius: 0 0 30px 30px;
+}
+
+#youtube-screen {
+    display: none;
+    height: calc(100% - 35px);
+    width: 100%;
+    background: #f8f9fa;
+    border-radius: 0 0 30px 30px;
+}
+
+#youtube-screen .app-header {
+    background: #FF0000;  /* YouTube red */
+}
+
+.youtube-search {
+    display: flex;
+    padding: 8px; /* Reduced padding */
+    background: white;
+    border-bottom: 1px solid #ddd;
+    min-height: 50px; /* Fixed height for search bar */
+}
+
+.youtube-search input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.youtube-search button {
+    background: #FF0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.youtube-container {
+    height: calc(100% - 60px); /* Account for header */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-height: calc(100% - 15px); /* Ensure container stays within bounds */
+    padding-bottom: 15px; /* Add padding to prevent content touching bottom border */
+}
+
+.youtube-container iframe {
+    flex: 1;
+    width: 100%;
+    border: none;
+}
+
+.youtube-player-container {
+    flex: 1;
+    position: relative;
+    padding-bottom: 50%; /* Reduced from 56.25% for shorter height */
+    height: 0;
+    overflow: hidden;
+    margin: 0 8px; /* Add margins to prevent touching edges */
+    border-radius: 8px; /* Optional: rounded corners */
+    height: calc(100% - 50px); /* Subtract search bar height */
+    max-height: 200px; /* Limit maximum height */
+    position: relative;
+    overflow: hidden;
+    margin: 8px;
+    border-radius: 8px;
+}
+
+.youtube-player-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.youtube-results {
+    flex: 1;
+    overflow-y: scroll;
+    padding: 8px;
+    margin-bottom: 8px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: calc(100% - 50px); /* Subtract search bar height */
+}
+
+/* Hide webkit scrollbar */
+.youtube-results::-webkit-scrollbar {
+    display: none;
+}
+
+.video-result {
+    display: flex;
+    margin-bottom: 8px; /* Reduced margin */
+    padding: 8px; /* Reduced padding */
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    /* Prevent content overflow */
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.video-result:hover {
+    background: #f0f0f0;
+}
+
+.video-thumbnail {
+    width: 100px; /* Slightly smaller thumbnail */
+    height: 56px; /* Maintain 16:9 ratio */
+    margin-right: 8px;
+    object-fit: cover;
+}
+
+.video-info {
+    flex: 1;
+    /* Prevent text overflow */
+    overflow: hidden;
+}
+
+.video-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    /* Prevent long titles from breaking layout */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.video-channel {
+    font-size: 12px;
+    color: #606060;
+    /* Prevent long channel names from breaking layout */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.app-header {
+    background: #2196F3;
+    color: white;
+    padding: 15px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+}
+
+.back-button {
+    background: rgba(255,255,255,0.2);
+    padding: 8px 15px;
+    border-radius: 50%;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.balance-container {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin: 20px;
+}
+
+#balance {
+    font-size: 42px;
+    font-weight: bold;
+    color: #2196F3;
+    margin: 20px 0;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+}

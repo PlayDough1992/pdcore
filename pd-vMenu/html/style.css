@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: transparent;
+}
+
+.menu {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.menu-header {
+    background: #4682b4;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+
+.menu-content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-button {
+    background: #2f3640;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.menu-button:hover {
+    background: #ff6b81;
+}
