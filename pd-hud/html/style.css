@@ -1,0 +1,117 @@
+#minimap-border {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 290px;
+    height: 190px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+}
+
+#title-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    background: rgb(0, 0, 0);  /* Solid black */
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+#status-bars {
+    position: fixed;
+    bottom: 215px;
+    left: 17px;
+    width: 290px;
+    display: flex;
+    gap: 4px;
+    padding: 0 5px;
+}
+
+#vertical-bars {
+    position: fixed;
+    bottom: 20px;
+    left: 315px;  /* Right next to minimap border */
+    height: 190px;  /* Match minimap height */
+    display: flex;
+    gap: 4px;
+}
+
+.vertical-bar {
+    position: relative;  /* Add this */
+    width: 12px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;    /* This is crucial */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.vertical-bar .bar-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;           /* Add this */
+    width: 100%;
+    height: 0%;
+    transition: all 0.3s ease;
+    z-index: 1;        /* Add this */
+}
+
+#vehicle-health {
+    position: fixed;
+    bottom: 235px;  /* Above other status bars */
+    left: 22px;
+    width: 288px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.bar-container {
+    height: 12px;
+    flex: 1;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.health .bar-fill {
+    background: linear-gradient(90deg, #ff3838 0%, #ff5858 100%);
+}
+
+.stamina .bar-fill {
+    background: linear-gradient(90deg, #3898ff 0%, #58a8ff 100%);
+}
+
+.vehicle {
+    background: linear-gradient(90deg, #ff9800 0%, #ffc107 100%);
+}
+
+.altitude .bar-fill {
+    background: linear-gradient(0deg, #ffd700 0%, #ffeb3b 100%);
+    border-radius: 5px;  /* Slightly smaller than parent */
+}
+
+.oxygen .bar-fill {
+    background: linear-gradient(0deg, #ffffff 0%, #e0e0e0 100%);
+    border-radius: 5px;  /* Slightly smaller than parent */
+}
+
+.bar-fill {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+}

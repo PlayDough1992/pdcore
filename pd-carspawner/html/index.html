@@ -1,0 +1,114 @@
+\index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PD Car Spawner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="carspawner-menu">
+        <div class="close-button" id="closeButton">×</div>
+        
+        <div class="sidebar">
+            <div class="menu-item active" data-menu="spawn">Spawn Vehicle</div>
+            <div class="menu-item" data-menu="saved">Saved Vehicles</div>
+            <div class="menu-item" data-menu="modify">Modifications</div>
+            <div class="menu-item" data-menu="colors">Colors</div>
+            <div class="menu-item" data-menu="performance">Performance</div>
+            <div class="menu-item" data-menu="extras">Extras</div>
+            <div class="menu-item" data-menu="livery">Livery</div>
+        </div>
+
+        <div class="content">
+            <!-- Vehicle Spawn Menu -->
+            <div class="menu-content active" id="spawn-menu">
+                <div class="search-box">
+                    <input type="text" id="vehicleSearch" placeholder="Search vehicles...">
+                </div>
+                <div class="categories"></div>
+                <div class="vehicle-list"></div>
+            </div>
+
+            <!-- Saved Vehicles Menu -->
+            <div class="menu-content" id="saved-menu">
+                <div class="saved-vehicles">
+                    <h3>Your Saved Vehicles</h3>
+                    <div class="saved-list"></div>
+                </div>
+            </div>
+
+            <!-- Modifications Menu -->
+            <div class="menu-content" id="modify-menu">
+                <div class="mod-options"></div>
+            </div>
+
+            <!-- Colors Menu -->
+            <div class="menu-content" id="colors-menu">
+                <div class="color-section">
+                    <h3>Primary Color</h3>
+                    <div class="color-picker primary"></div>
+                    <h3>Secondary Color</h3>
+                    <div class="color-picker secondary"></div>
+                </div>
+            </div>
+
+            <!-- Performance Menu -->
+            <div class="menu-content" id="performance-menu">
+                <div class="performance-stats">
+                    <div class="stat-bar">
+                        <label>Top Speed</label>
+                        <div class="progress-bar" id="speedBar"><div></div></div>
+                    </div>
+                    <div class="stat-bar">
+                        <label>Acceleration</label>
+                        <div class="progress-bar" id="accelerationBar"><div></div></div>
+                    </div>
+                    <div class="stat-bar">
+                        <label>Braking</label>
+                        <div class="progress-bar" id="brakingBar"><div></div></div>
+                    </div>
+                    <div class="stat-bar">
+                        <label>Handling</label>
+                        <div class="progress-bar" id="handlingBar"><div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extras Menu -->
+            <div class="menu-content" id="extras-menu">
+                <div class="extras-list"></div>
+            </div>
+
+            <!-- Livery Menu -->
+            <div class="menu-content" id="livery-menu">
+                <div class="livery-list"></div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <button class="action-btn" data-action="repair">Repair</button>
+            <button class="action-btn" data-action="clean">Clean</button>
+            <button class="action-btn" data-action="flip">Flip</button>
+            <button class="action-btn" data-action="delete">Delete</button>
+            <button class="action-btn save-vehicle" data-action="save">Save Vehicle</button>
+        </div>
+    </div>
+
+    <!-- Save Vehicle Modal -->
+    <div class="modal" id="saveModal">
+        <div class="modal-content">
+            <h3>Save Vehicle Configuration</h3>
+            <input type="text" id="saveVehicleName" placeholder="Enter vehicle name">
+            <div class="modal-buttons">
+                <button id="saveCancelBtn">Cancel</button>
+                <button id="saveConfirmBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

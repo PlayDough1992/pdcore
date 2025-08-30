@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PD Appearance Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="clothing-menu">
+        <div class="header">
+            <h1>Clothing Menu</h1>
+            <button id="closeBtn">×</button>
+        </div>
+
+        <div class="menu-container">
+            <div class="sidebar">
+                <div class="category active" data-category="clothing">Clothing</div>
+                <div class="category" data-category="props">Props</div>
+            </div>
+
+            <div class="content">
+                <div class="section active" id="clothing-section">
+                    <!-- Populated by JavaScript -->
+                </div>
+                <div class="section" id="props-section">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <div class="camera-controls">
+            <button class="cam-btn" data-view="default">Full Body</button>
+            <button class="cam-btn" data-view="head">Head</button>
+            <button class="cam-btn" data-view="body">Upper Body</button>
+            <button class="cam-btn" data-view="legs">Legs</button>
+            <button class="cam-btn" data-view="feet">Feet</button>
+        </div>
+
+        <div class="action-buttons">
+            <button id="saveBtn">Save</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

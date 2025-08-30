@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="settings-menu">
+        <h2>First Person Settings</h2>
+        <div class="setting-item">
+            <label for="fov">Field of View</label>
+            <input type="range" id="fov" min="60" max="120" step="1">
+            <span class="value"></span>
+        </div>
+        <div class="setting-item">
+            <label for="aimAssist">Aim Assist</label>
+            <label class="toggle">
+                <input type="checkbox" id="aimAssist">
+                <span class="slider-toggle"></span>
+            </label>
+        </div>
+        <div class="setting-item">
+            <label for="blur">Motion Blur</label>
+            <label class="toggle">
+                <input type="checkbox" id="blur">
+                <span class="slider-toggle"></span>
+            </label>
+        </div>
+        <div class="setting-item">
+            <label for="bloom">Bloom Effect</label>
+            <label class="toggle">
+                <input type="checkbox" id="bloom">
+                <span class="slider-toggle"></span>
+            </label>
+        </div>
+        <div class="footer">
+            <small>Press ESC to close</small>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

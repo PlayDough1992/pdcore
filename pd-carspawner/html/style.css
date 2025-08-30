@@ -1,0 +1,452 @@
+:root {
+    --primary-bg: rgba(16, 24, 32, 0.95);
+    --secondary-bg: rgba(24, 32, 40, 0.95);
+    --accent-color: #007AFF;
+    --text-color: #ffffff;
+    --hover-color: #0056b3;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    user-select: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+
+#carspawner-menu {
+    position: relative;
+    width: 1000px;
+    height: 600px;
+    background: var(--primary-bg);
+    border-radius: 8px;
+    display: none;
+    overflow: hidden;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 200px;
+    height: 100%;
+    background: var(--secondary-bg);
+    padding: 20px 0;
+    border-right: 1px solid var(--border-color);
+}
+
+.menu-item {
+    padding: 15px 20px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.menu-item:hover {
+    background: var(--accent-color);
+}
+
+.menu-item.active {
+    background: var(--accent-color);
+}
+
+.menu-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--text-color);
+}
+
+/* Content Area */
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.menu-content {
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.menu-content.active {
+    display: block;
+}
+
+/* Search Box Styling */
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+/* Vehicle Categories */
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category {
+    padding: 8px 16px;
+    background: var(--secondary-bg);
+    color: var(--text-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.category:hover {
+    background: var(--accent-color);
+}
+
+.category.active {
+    background: var(--accent-color);
+}
+
+/* Vehicle List */
+.vehicle-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+.vehicle-item {
+    padding: 15px;
+    background: var(--secondary-bg);
+    color: var (--text-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.vehicle-item:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Color Picker Styling */
+.color-section {
+    background: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.color-picker {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.color-presets {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5px;
+}
+
+.color-preset {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+}
+
+/* Performance Stats Styling */
+.stat-bar {
+    margin-bottom: 15px;
+}
+
+.stat-bar label {
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: var(--secondary-bg);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar div {
+    height: 100%;
+    background: var(--accent-color);
+    transition: width 0.3s;
+}
+
+/* Quick Actions */
+.quick-actions {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 8px 16px;
+    background: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background: var(--hover-color);
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--primary-bg);
+    padding: 30px;
+    border-radius: 8px;
+    min-width: 400px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+/* Modifications Menu Styles */
+.mod-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+}
+
+.mod-section {
+    background: var(--secondary-bg);
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.mod-section h3 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.mod-levels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.mod-level {
+    background: var(--primary-bg);
+    color: var(--text-color);
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.mod-level:hover {
+    background: var(--accent-color);
+}
+
+.mod-level.active {
+    background: var(--accent-color);
+}
+
+/* Performance Stats Styles */
+.performance-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+}
+
+.stat-bar {
+    background: var(--secondary-bg);
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.stat-bar label {
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: var(--primary-bg);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar > div {
+    height: 100%;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+/* Livery Styles */
+.livery-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+}
+
+.livery-item {
+    background: var(--secondary-bg);
+    color: var(--text-color);
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.livery-item:hover {
+    background: var(--accent-color);
+}
+
+.livery-item.active {
+    background: var(--accent-color);
+}
+
+/* Extras Styles */
+.extras-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 15px;
+}
+
+.extra-item {
+    background: var(--secondary-bg);
+    color: var(--text-color);
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.extra-item:hover {
+    background: var(--accent-color);
+}
+
+.extra-item.active {
+    background: var(--accent-color);
+}
+
+/* Performance Stats */
+.performance-stats {
+    padding: 15px;
+}
+
+.stat-bar {
+    margin-bottom: 15px;
+}
+
+.stat-bar label {
+    display: block;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--secondary-bg);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar div {
+    height: 100%;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+/* Close Button Styling */
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background: var(--accent-color);
+    color: var(--text-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 9999;
+    user-select: none;
+    transition: all 0.2s;
+}
+
+.close-button:hover {
+    background: var(--hover-color);
+    transform: scale(1.1);
+}

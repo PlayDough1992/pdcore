@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#chat-messages {
+    position: fixed;
+    top: 20%;
+    right: 1%;
+    width: 300px;
+    max-height: 60vh;
+    overflow: hidden; /* Changed from overflow-y: hidden to disable all scrollbars */
+}
+
+/* Hide scrollbars for different browsers while maintaining overflow behavior */
+#chat-messages::-webkit-scrollbar {
+    display: none;
+}
+
+#chat-messages {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.chat-message {
+    padding: 12px 15px;
+    margin: 5px;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background-color: rgba(26, 26, 26, 0.9);
+    color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    word-wrap: break-word;
+    animation: slideIn 0.3s forwards;
+}
+
+/* Own messages (blue theme) */
+.chat-message.own-message {
+    border-left: 4px solid #4794E6;
+}
+
+.chat-message.own-message .player-name {
+    color: #4794E6;
+}
+
+/* Other player messages (green theme) */
+.chat-message.other-message {
+    border-left: 4px solid #47E668;
+}
+
+.chat-message.other-message .player-name {
+    color: #47E668;
+}
+
+.player-name {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
