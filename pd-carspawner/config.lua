@@ -45,6 +45,7 @@ Config.Categories = {
             { name = "Sheriff SUV", model = "sheriff2", type = "police" },
             { name = "Police Riot", model = "riot", type = "police" },
             { name = "Police Prison Bus", model = "pbus", type = "police" },
+    --      { name = "Lamborghini Police Car", model = "polrevent", type = "police" },  -- Example Addon Car
             { name = "Ambulance", model = "ambulance", type = "ems" },
             { name = "Fire Truck", model = "firetruk", type = "fire" }
         }
@@ -159,4 +160,5 @@ Config.Keys = {
 }
 
 return Config
+
 
