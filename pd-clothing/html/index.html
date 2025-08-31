@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PD Clothing Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="model-selector" class="modal">
+        <div class="modal-content">
+            <h2>Select Character Model</h2>
+            <div class="model-options">
+                <button class="model-btn" data-model="mp_m_freemode_01">Male</button>
+                <button class="model-btn" data-model="mp_f_freemode_01">Female</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="clothing-menu">
+        <div class="header">
+            <h1>Character Customization</h1>
+            <button id="closeBtn">×</button>
+        </div>
+        
+        <div class="menu-container">
+            <div class="categories">
+                <button class="tab-btn active" data-tab="components">Clothing</button>
+                <button class="tab-btn" data-tab="props">Accessories</button>
+                <button class="tab-btn create-new" data-tab="new">Create New Character</button>
+            </div>
+            
+            <div class="tab-content active" id="components-tab">
+                <!-- Populated by JavaScript -->
+            </div>
+            
+            <div class="tab-content" id="props-tab">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="footer">
+            <button id="resetBtn" class="secondary">Reset</button>
+            <button id="saveBtn" class="primary">Close</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Ensure NUI is working
+        window.addEventListener('message', (event) => {
+            const data = event.data;
+            if (data.action === 'show') {
+                document.getElementById('clothing-menu').style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+</html>

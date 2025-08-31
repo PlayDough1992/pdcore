@@ -1,0 +1,335 @@
+:root {
+    --primary: #3498db;
+    --primary-dark: #2980b9;
+    --background: #1a1a1a;
+    --surface: #2d2d2d;
+    --text: #ffffff;
+    --text-secondary: #b0b0b0;
+    --border: #404040;
+    --danger: #e74c3c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--background);
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    border: 2px solid var(--primary);
+}
+
+.modal-content h2 {
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.model-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.model-btn {
+    padding: 15px 30px;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    color: var(--text);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.model-btn:hover {
+    border-color: var(--primary);
+    background: var(--primary);
+}
+
+.create-new {
+    margin-left: auto;
+    background: var(--primary) !important;
+    color: white !important;
+}
+
+#clothing-menu {
+    position: fixed;
+    width: 400px;
+    height: 90vh;
+    background: var(--background);
+    color: var(--text);
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+/* Menu positioning is handled by JavaScript based on config */
+#clothing-menu.right {
+    right: 20px;
+    top: 5vh;
+}
+
+#clothing-menu.left {
+    left: 20px;
+    top: 5vh;
+}
+
+.header {
+    padding: 20px;
+    background: var(--surface);
+    border-bottom: 2px solid var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#closeBtn {
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 8px;
+    transition: color 0.2s;
+}
+
+#closeBtn:hover {
+    color: var(--primary);
+}
+
+.menu-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.categories {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    border-color: var(--primary);
+}
+
+.tab-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.item-group {
+    background: var(--surface);
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.item-group h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.control-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.control-label {
+    width: 80px;
+    color: var(--text-secondary);
+}
+
+.slider-control {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    align-items: center;
+}
+
+.slider-container {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+input[type="range"] {
+    flex: 1;
+    accent-color: var(--primary);
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.control-btn {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 18px;
+}
+
+.control-btn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.value {
+    min-width: 30px;
+    text-align: center;
+    color: var(--text);
+}
+
+
+
+.camera-slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.camera-slider input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.camera-slider .value {
+    min-width: 40px;
+    text-align: right;
+    color: var(--text-secondary);
+}
+
+.footer {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-radius: 0 0 8px 8px;
+}
+
+.footer button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.footer button.primary {
+    background: var(--primary);
+    border: none;
+    color: white;
+}
+
+.footer button.primary:hover {
+    background: var(--primary-dark);
+}
+
+.footer button.secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.footer button.secondary:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
