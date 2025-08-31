@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDCore Vehicle Spawner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="vehicle-menu">
+        <div class="header">
+            <span class="title">Vehicle Spawner</span>
+            <button id="closeBtn" class="close-button">&times;</button>
+        </div>
+
+        <div class="content">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <input type="text" id="vehicleSearch" placeholder="Search vehicles...">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Categories -->
+                <div class="categories-container">
+                    <div class="category-list" id="categoryList"></div>
+                </div>
+
+                <!-- Vehicles -->
+                <div class="vehicles-container">
+                    <div class="vehicle-list" id="vehicleList"></div>
+                    <div id="noVehicles" class="no-results">No vehicles found</div>
+                </div>
+            </div>
+
+            <!-- Vehicle Actions -->
+            <div class="actions-container">
+                <button id="repairBtn" class="action-button">
+                    <span class="action-icon">🔧</span>
+                    <span>Repair</span>
+                </button>
+                <button id="cleanBtn" class="action-button">
+                    <span class="action-icon">✨</span>
+                    <span>Clean</span>
+                </button>
+                <button id="flipBtn" class="action-button">
+                    <span class="action-icon">🔄</span>
+                    <span>Flip</span>
+                </button>
+                <button id="deleteBtn" class="action-button delete">
+                    <span class="action-icon">🗑️</span>
+                    <span>Delete</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
