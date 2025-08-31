@@ -7,7 +7,7 @@ Config.AdminIdentifier = "fivem" -- Type of identifier to check for admin
 Config.JobAuthorization = {
     -- Police Vehicle Authorization
     authorizedPolice = {
-        "fivem:6737571"--,
+        "fivem:xxxxxx"--,
        -- "license:xxxxxxxx",
        -- "fivem:xxxxxxxx"
     },
@@ -159,3 +159,4 @@ Config.Keys = {
 }
 
 return Config
+
