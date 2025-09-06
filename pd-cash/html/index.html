@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Give Cash</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cash-ui-container" id="cash-ui-container" style="display:none;">
+    <div class="cash-ui-header">Give Cash</div>
+    <div class="cash-ui-row">
+      <label for="player-select">Player</label>
+      <select id="player-select">
+        <option value="" disabled selected>Select player</option>
+      </select>
+    </div>
+    <div class="cash-ui-row">
+      <label for="reason-select">Reason</label>
+      <select id="reason-select">
+        <option value="" disabled selected>Select reason</option>
+      </select>
+    </div>
+    <div class="cash-ui-row">
+      <label>Amount</label>
+      <div class="numpad" id="numpad" data-value=""></div>
+    </div>
+    <div class="amount-display">$<span id="amount-value">0</span></div>
+    <button class="give-cash-btn" id="give-cash-btn" disabled>Give Cash</button>
+    <button class="close-cash-btn" id="close-cash-ui-btn">Close</button>
+  </div>
+  
+  <div class="cash-ui-modal" id="cash-modal" style="display:none;">
+    <div class="cash-modal-content">
+      <div class="cash-modal-header">Confirm Transaction</div>
+      <div class="cash-modal-summary" id="cash-modal-summary"></div>
+      <div class="cash-modal-buttons">
+        <button id="cash-modal-accept">Confirm</button>
+        <button id="cash-modal-deny">Cancel</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+-- pd-cash server: robust, configurable, and commented
+local spawnedCash = {}
+local cashIdCounter = 0
+
+-- Utility: get random location and amount
+local function getRandomLocation()
+    local locs = Config.CashSpawn.Locations
+    return locs[math.random(1, #locs)]
+end
+local function getRandomAmount()
+    return math.random(Config.CashSpawn.AmountMin, Config.CashSpawn.AmountMax)
+end
+
+-- Cash drop spawner
+if Config.CashSpawn.Enabled then
+    Citizen.CreateThread(function()
+        -- Initial cash drop on resource start
+        for i = 1, 5 do
+            cashIdCounter = cashIdCounter + 1
+            local coords = getRandomLocation()
+            local amount = getRandomAmount()
+            spawnedCash[cashIdCounter] = {coords = coords, amount = amount}
+            TriggerClientEvent('pd-cash:spawnCash', -1, cashIdCounter, coords, amount)
+            print("[pd-cash] Spawned initial cash drop #" .. cashIdCounter .. " at " .. coords.x .. ", " .. coords.y .. ", " .. coords.z)
+            Citizen.Wait(100)
+        end
+        
+        -- Periodic spawning
+        while true do
+            Citizen.Wait(Config.CashSpawn.Interval)
+            local spawnCount = 0
+            for _, _ in pairs(spawnedCash) do
+                spawnCount = spawnCount + 1
+            end
+            
+            if spawnCount < Config.CashSpawn.MaxDrops then
+                cashIdCounter = cashIdCounter + 1
+                local coords = getRandomLocation()
+                local amount = getRandomAmount()
+                spawnedCash[cashIdCounter] = {coords = coords, amount = amount}
+                TriggerClientEvent('pd-cash:spawnCash', -1, cashIdCounter, coords, amount)
+                print("[pd-cash] Spawned cash drop #" .. cashIdCounter .. " at " .. coords.x .. ", " .. coords.y .. ", " .. coords.z)
+            end
+        end
+    end)
+end
+
+-- Pickup logic
+RegisterServerEvent('pd-cash:pickupCash')
+AddEventHandler('pd-cash:pickupCash', function(cashId)
+    local src = source
+    local cash = spawnedCash[cashId]
+    if not cash then return end
+    
+    -- Debug output
+    print("[pd-cash] Player " .. GetPlayerName(src) .. " picked up cash #" .. cashId)
+    
+    spawnedCash[cashId] = nil
+    TriggerClientEvent('pd-cash:removeCash', -1, cashId)
+    
+    -- Find fivem identifier
+    local fivemId
+    for i = 0, GetNumPlayerIdentifiers(src) - 1 do
+        local id = GetPlayerIdentifier(src, i)
+        if id:sub(1, 6) == 'fivem:' then fivemId = id break end
+    end
+    if not fivemId then return end
+    
+    local safeId = fivemId:gsub(':', '%%3A')
+    local path = string.format('playermoney/%s.json', safeId)
+    local moneyFile = LoadResourceFile('pd-bank', path)
+    local moneyData = {cash = 0, bank = 0}
+    if moneyFile then 
+        moneyData = json.decode(moneyFile)
+    end
+    moneyData.cash = (moneyData.cash or 0) + cash.amount
+    SaveResourceFile('pd-bank', path, json.encode(moneyData), -1)
+    TriggerClientEvent('pd-notifications:notify', src, {text = string.format('Picked up $%d cash!', cash.amount), type = 'success'})
+end)
+
+-- Give cash logic
+RegisterCommand('giveCash', function(source)
+    TriggerClientEvent('pd-cash:openGiveCash', source)
+end)
+
+RegisterServerEvent('pd-cash:requestNearbyPlayers')
+AddEventHandler('pd-cash:requestNearbyPlayers', function()
+    local src = source
+    local players = {}
+    local srcPed = GetPlayerPed(src)
+    local srcCoords = GetEntityCoords(srcPed)
+    for _, id in ipairs(GetPlayers()) do
+        if tonumber(id) ~= tonumber(src) then
+            local ped = GetPlayerPed(id)
+            local coords = GetEntityCoords(ped)
+            if #(srcCoords - coords) < (Config.Give.Radius or 10.0) then
+                table.insert(players, { id = id, name = GetPlayerName(id) })
+            end
+        end
+    end
+    TriggerClientEvent('pd-cash:setPlayers', src, players)
+end)
+
+RegisterServerEvent('pd-cash:giveCash')
+AddEventHandler('pd-cash:giveCash', function(targetId, amount, reason)
+    local src = source
+    amount = tonumber(amount)
+    if not targetId or not amount or amount <= 0 then return end
+    -- Find fivem identifiers
+    local srcFivem, tgtFivem = nil, nil
+    for i = 0, GetNumPlayerIdentifiers(src) - 1 do
+        local id = GetPlayerIdentifier(src, i)
+        if id:sub(1, 6) == 'fivem:' then srcFivem = id break end
+    end
+    for i = 0, GetNumPlayerIdentifiers(targetId) - 1 do
+        local id = GetPlayerIdentifier(targetId, i)
+        if id:sub(1, 6) == 'fivem:' then tgtFivem = id break end
+    end
+    if not srcFivem or not tgtFivem then return end
+    local srcSafe = srcFivem:gsub(':', '%%3A')
+    local tgtSafe = tgtFivem:gsub(':', '%%3A')
+    local srcPath = string.format('playermoney/%s.json', srcSafe)
+    local tgtPath = string.format('playermoney/%s.json', tgtSafe)
+    local srcFile = LoadResourceFile('pd-bank', srcPath)
+    local tgtFile = LoadResourceFile('pd-bank', tgtPath)
+    local srcData = {cash = 0, bank = 0}
+    local tgtData = {cash = 0, bank = 0}
+    if srcFile then srcData = json.decode(srcFile) end
+    if tgtFile then tgtData = json.decode(tgtFile) end
+    if (srcData.cash or 0) < amount then
+        TriggerClientEvent('pd-notifications:notify', src, {text = 'Not enough cash!', type = 'error'})
+        TriggerClientEvent('pd-cash:closeGiveCash', src)
+        return
+    end
+    srcData.cash = srcData.cash - amount
+    tgtData.cash = (tgtData.cash or 0) + amount
+    SaveResourceFile('pd-bank', srcPath, json.encode(srcData), -1)
+    SaveResourceFile('pd-bank', tgtPath, json.encode(tgtData), -1)
+    TriggerClientEvent('pd-notifications:notify', src, {text = string.format('You gave $%d to %s for %s.', amount, GetPlayerName(targetId), reason), type = 'success'})
+    TriggerClientEvent('pd-notifications:notify', targetId, {text = string.format('You received $%d from %s for %s.', amount, GetPlayerName(src), reason), type = 'success'})
+    TriggerClientEvent('pd-cash:closeGiveCash', src)
+end)
+
+RegisterServerEvent('pd-cash:denyCash')
+AddEventHandler('pd-cash:denyCash', function()
+    local src = source
+    TriggerClientEvent('pd-notifications:notify', src, {text = string.format('Transaction was cancelled by %s!!', GetPlayerName(src)), type = 'error'})
+    TriggerClientEvent('pd-cash:closeGiveCash', src)
+end)
+
+-- Handle clients requesting all existing cash drops
+RegisterServerEvent('pd-cash:requestAllCashDrops')
+AddEventHandler('pd-cash:requestAllCashDrops', function()
+    local src = source
+    TriggerClientEvent('pd-cash:receiveAllCashDrops', src, spawnedCash)
+    print("[pd-cash] Sent all cash drops to player " .. GetPlayerName(src))
+end)

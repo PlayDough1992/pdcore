@@ -1,0 +1,307 @@
+/* pd-cash: UI styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: transparent;
+  user-select: none;
+}
+
+/* Main container */
+.cash-ui-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #23272a;
+  border-radius: 14px;
+  padding: 32px 24px 24px 24px;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.7);
+  width: 340px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+/* Header styling */
+.cash-ui-header {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Row container */
+.cash-ui-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+/* Label styling */
+.cash-ui-row label {
+  color: #bbb;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+/* Select styling */
+.cash-ui-row select {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #3a3d42;
+  background: #2c2f33;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.cash-ui-row select:focus {
+  border-color: #5865f2;
+}
+
+/* Numpad grid */
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 8px;
+  margin-top: 6px;
+  width: 100%;
+}
+
+/* Numpad buttons */
+.numpad-btn {
+  background: #3a3d42;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.numpad-btn:hover {
+  background: #4a4e54;
+}
+
+.numpad-btn:active {
+  background: #5865f2;
+}
+
+/* Amount display */
+.amount-display {
+  font-size: 1.6rem;
+  color: #fff;
+  margin: 16px 0;
+  font-weight: 700;
+  text-align: center;
+  background: #2c2f33;
+  padding: 10px;
+  border-radius: 6px;
+  width: 100%;
+}
+
+/* Action buttons */
+.give-cash-btn {
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  padding: 12px 0;
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.give-cash-btn:hover:not(:disabled) {
+  background: #219150;
+}
+
+.give-cash-btn:disabled {
+  background: #27ae6080;
+  cursor: not-allowed;
+}
+
+.close-cash-btn {
+  background: #3a3d42;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 10px 0;
+  width: 100%;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.close-cash-btn:hover {
+  background: #4a4e54;
+}
+
+/* Modal styling */
+.cash-ui-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+}
+
+.cash-modal-content {
+  background: #23272a;
+  border-radius: 10px;
+  padding: 24px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.7);
+}
+
+.cash-modal-header {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.cash-modal-summary {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.cash-modal-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.cash-modal-buttons button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s;
+  border: none;
+}
+
+#cash-modal-accept {
+  background: #27ae60;
+  color: #fff;
+}
+
+#cash-modal-accept:hover {
+  background: #219150;
+}
+
+#cash-modal-deny {
+  background: #e74c3c;
+  color: #fff;
+}
+
+#cash-modal-deny:hover {
+  background: #c0392b;
+  grid-gap: 8px;
+  margin-top: 6px;
+}
+
+.numpad-btn {
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.numpad-btn:hover {
+  background: #666;
+}
+.give-cash-btn {
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  padding: 10px 0;
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+.give-cash-btn:hover {
+  background: #219150;
+}
+#close-cash-ui-btn {
+  background: #222 !important;
+  color: #fff !important;
+  margin-top: 8px;
+  border: 1px solid #444;
+}
+#close-cash-ui-btn:hover {
+  background: #444 !important;
+}
+.cash-ui-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000a;
+  z-index: 100;
+}
+.cash-modal-content {
+  background: #23272a;
+  border-radius: 10px;
+  padding: 32px 24px 24px 24px;
+  box-shadow: 0 4px 32px #000a;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cash-modal-summary {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+  text-align: center;
+}
+.cash-modal-content button {
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 8px 24px;
+  margin: 0 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+.cash-modal-content button:hover {
+  background: #219150;
+}

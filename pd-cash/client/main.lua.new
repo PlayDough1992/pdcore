@@ -1,0 +1,107 @@
+-- pd-cash client: robust, reliable, all NUI callbacks in one place
+local spawnedCash = {}
+local spawnedObjects = {}
+local cashModelName = Config.CashSpawn.Model or 'PICKUP_MONEY_VARIABLE'
+local cashModel = -424660425 -- Hash for PICKUP_MONEY_VARIABLE
+local pickupRadius = Config.CashSpawn.PickupRadius or 2.0
+
+-- NUI: Open/close menu
+RegisterNetEvent('pd-cash:openGiveCash')
+AddEventHandler('pd-cash:openGiveCash', function()
+    SetNuiFocus(true, true)
+    SendNUIMessage({ action = 'showGiveCash' })
+    TriggerServerEvent('pd-cash:requestNearbyPlayers')
+end)
+
+RegisterNetEvent('pd-cash:setPlayers')
+AddEventHandler('pd-cash:setPlayers', function(players)
+    SendNUIMessage({ action = 'setPlayers', players = players })
+end)
+
+RegisterNetEvent('pd-cash:closeGiveCash')
+AddEventHandler('pd-cash:closeGiveCash', function()
+    SetNuiFocus(false, false)
+    SendNUIMessage({ action = 'closeGiveCash' })
+end)
+
+-- Register a new event to get all existing cash drops when joining
+RegisterNetEvent('pd-cash:receiveAllCashDrops')
+AddEventHandler('pd-cash:receiveAllCashDrops', function(allCashDrops)
+    for id, data in pairs(allCashDrops) do
+        if not spawnedCash[id] then
+            spawnedCash[id] = data
+            -- Create a proper money pickup
+            local pickup = CreatePickup(cashModel, data.coords.x, data.coords.y, data.coords.z, 0, data.amount, true, 0)
+            spawnedObjects[id] = pickup
+        end
+    end
+end)
+
+-- NUI Callbacks
+RegisterNUICallback('closeCashUI', function(data, cb)
+    SetNuiFocus(false, false)
+    SendNUIMessage({ action = 'closeGiveCash' })
+    cb('ok')
+end)
+
+RegisterNUICallback('giveCash', function(data, cb)
+    TriggerServerEvent('pd-cash:giveCash', data.player, data.amount, data.reason)
+    cb('ok')
+end)
+
+RegisterNUICallback('denyCash', function(data, cb)
+    TriggerServerEvent('pd-cash:denyCash', data)
+    cb('ok')
+end)
+
+RegisterNUICallback('getReasons', function(data, cb)
+    cb({ reasons = Config.Give.Reasons })
+end)
+
+-- 3D cash drop logic
+RegisterNetEvent('pd-cash:spawnCash')
+AddEventHandler('pd-cash:spawnCash', function(cashId, coords, amount)
+    spawnedCash[cashId] = {coords = coords, amount = amount}
+    if not spawnedObjects[cashId] then
+        -- Create a proper money pickup
+        local pickup = CreatePickup(cashModel, coords.x, coords.y, coords.z, 0, amount, true, 0)
+        spawnedObjects[cashId] = pickup
+        -- Debug notification
+        TriggerEvent('pd-notifications:notify', {text = string.format('Cash drop spawned at %0.2f, %0.2f, %0.2f!', coords.x, coords.y, coords.z), type = 'info'})
+    end
+end)
+
+RegisterNetEvent('pd-cash:removeCash')
+AddEventHandler('pd-cash:removeCash', function(cashId)
+    spawnedCash[cashId] = nil
+    if spawnedObjects[cashId] then
+        -- For pickups we don't need to delete them, the game handles it
+        spawnedObjects[cashId] = nil
+    end
+end)
+
+Citizen.CreateThread(function()
+    -- Wait a bit for everything to load
+    Citizen.Wait(5000)
+    
+    -- Request all existing cash drops when joining
+    TriggerServerEvent('pd-cash:requestAllCashDrops')
+    
+    -- Main loop for checking pickup radius
+    while true do
+        Citizen.Wait(500)
+        local playerPed = PlayerPedId()
+        local playerCoords = GetEntityCoords(playerPed)
+        for cashId, data in pairs(spawnedCash) do
+            local dist = #(playerCoords - vector3(data.coords.x, data.coords.y, data.coords.z))
+            -- Draw 3D marker above the cash
+            if spawnedObjects[cashId] then
+                DrawMarker(20, data.coords.x, data.coords.y, data.coords.z + 0.5, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0.4, 80, 200, 120, 180, false, true, 2, false, nil, nil, false)
+            end
+            if dist < pickupRadius then
+                TriggerServerEvent('pd-cash:pickupCash', cashId)
+                break
+            end
+        end
+    end
+end)
