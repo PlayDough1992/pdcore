@@ -1,6 +1,6 @@
 local adminList = {
-    "discord:921141362810839061", -- PlayDough
-    "discord:891004735199518822"  -- madman
+    "discord:xxxxxxxxxxxxxxxxxx", -- Admin1
+    "discord:xxxxxxxxxxxxxxxxxx"  -- Admin2
 }
 
 local function IsPlayerAdmin(source)
@@ -19,5 +19,6 @@ local function IsPlayerAdmin(source)
     end
     return false
 end
+
 
 exports('IsPlayerAdmin', IsPlayerAdmin)
