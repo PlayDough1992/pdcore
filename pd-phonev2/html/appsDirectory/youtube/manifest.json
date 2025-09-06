@@ -1,0 +1,8 @@
+{
+  "id": "youtube",
+  "name": "YouTube",
+  "icon": "youtube-icon.png",
+  "html": "youtube.html",
+  "js": "youtube.js",
+  "css": "youtube.css"
+}

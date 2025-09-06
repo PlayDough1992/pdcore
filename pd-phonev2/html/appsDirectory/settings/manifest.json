@@ -1,0 +1,8 @@
+{
+  "id": "settings",
+  "name": "Settings",
+  "icon": "settings-icon.png",
+  "html": "settings.html",
+  "js": "settings.js",
+  "css": "settings.css"
+}

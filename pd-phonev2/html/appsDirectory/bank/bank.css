@@ -1,0 +1,191 @@
+.bank-cash-label {
+	color: #bbb;
+	font-size: 1.05em;
+	margin-top: 18px;
+	margin-bottom: 4px;
+}
+.bank-cash-value {
+	color: #ffd600;
+	font-size: 1.5em;
+	font-weight: 500;
+	margin-bottom: 4px;
+}
+.bank-cash-type {
+	color: #fff;
+	font-size: 1em;
+	margin-bottom: 12px;
+}
+/* Make Bank app fullscreen inside phone */
+.bank-container {
+	position: absolute;
+	top: 0; left: 0; width: 100%; height: 100%;
+	background: #181818;
+	color: #fff;
+	border-radius: 0;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Roboto', Arial, sans-serif;
+}
+.app-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: #202020;
+	color: #fff;
+	padding: 12px 16px;
+	font-size: 1.2em;
+	border-bottom: 1px solid #333;
+}
+.account-icon {
+	cursor: pointer;
+	font-size: 1.5em;
+}
+.bank-tabs {
+	display: flex;
+	justify-content: space-around;
+	background: #232323;
+	border-bottom: 1px solid #333;
+}
+.bank-tab {
+	flex: 1;
+	background: none;
+	border: none;
+	color: #bbb;
+	font-size: 1em;
+	padding: 10px 0 8px 0;
+	cursor: pointer;
+	outline: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: color 0.2s, border-bottom 0.2s;
+	border-bottom: 2.5px solid transparent;
+}
+.bank-tab-active {
+	color: #fff;
+	border-bottom: 2.5px solid #00bfa5;
+}
+.bank-balance-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	padding: 32px 0 0 0;
+}
+.bank-balance-label {
+	color: #bbb;
+	font-size: 1.1em;
+	margin-bottom: 8px;
+}
+.bank-balance-value {
+	color: #00bfa5;
+	font-size: 2.2em;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+.bank-account-type {
+	color: #fff;
+	font-size: 1.1em;
+	margin-bottom: 18px;
+}
+.bank-btn {
+	background: #00bfa5;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 10px 28px;
+	font-size: 1.1em;
+	cursor: pointer;
+	margin-top: 8px;
+	transition: background 0.2s;
+}
+.bank-btn:hover {
+	background: #009e88;
+}
+.bank-section-title {
+	font-size: 1.1em;
+	font-weight: 500;
+	color: #fff;
+	margin: 18px 0 10px 0;
+	padding-left: 16px;
+}
+.bank-input {
+	width: 90%;
+	margin: 10px auto;
+	display: block;
+	padding: 10px 14px;
+	border-radius: 10px;
+	border: none;
+	background: #232323;
+	color: #fff;
+	font-size: 1em;
+}
+.bank-settings-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 16px;
+	border-bottom: 1px solid #333;
+}
+.bank-settings-row label {
+	color: #fff;
+	font-size: 1em;
+}
+.bank-settings-row input[type="checkbox"] {
+	width: 22px;
+	height: 22px;
+}
+.bank-account-modal {
+	position: absolute;
+	top: 0; left: 0; width: 100%; height: 100%;
+	background: rgba(0,0,0,0.7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 4000;
+}
+.bank-account-content {
+	background: #232323;
+	border-radius: 18px;
+	padding: 32px 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 220px;
+}
+.bank-account-header {
+	font-size: 1.2em;
+	font-weight: 600;
+	margin-bottom: 18px;
+	color: #fff;
+}
+.bank-account-info {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 18px;
+}
+.bank-account-info i {
+	font-size: 2.2em;
+	color: #00bfa5;
+}
+#bank-account-close {
+	background: #00bfa5;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 8px 24px;
+	font-size: 1em;
+	cursor: pointer;
+	margin-top: 8px;
+	transition: background 0.2s;
+}
+#bank-account-close:hover {
+	background: #009e88;
+}
+.app-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+button { background: #444; color: #fff; border: none; border-radius: 8px; padding: 8px 16px; cursor: pointer; }
+button:hover { background: #666; }

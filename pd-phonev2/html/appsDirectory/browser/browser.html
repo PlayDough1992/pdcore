@@ -1,0 +1,22 @@
+
+<div id="browser-app">
+  <div class="browser-app-viewport">
+    <div class="browser-bar">
+      <button id="browser-menu" title="Menu" class="browser-menu-btn">
+        <span class="browser-menu-icon">&#9776;</span>
+      </button>
+      <input type="text" id="browser-url" placeholder="Enter URL..." />
+      <button id="browser-go">Go</button>
+      <div id="browser-menu-popup" class="browser-menu-popup" style="display:none;">
+        <div class="browser-menu-section"><b>Bookmarks</b></div>
+        <div id="browser-bookmarks"></div>
+        <hr style="border: none; border-top: 1px solid #444; margin: 6px 0;">
+        <div class="browser-menu-section browser-menu-action" data-action="refresh">Refresh</div>
+        <div class="browser-menu-section browser-menu-action" data-action="home">Home</div>
+        <div class="browser-menu-section browser-menu-action" data-action="settings">Settings</div>
+        <div class="browser-menu-section browser-menu-action" data-action="about">About</div>
+      </div>
+    </div>
+    <iframe id="browser-frame" class="browser-frame" src="about:blank" allowfullscreen></iframe>
+  </div>
+</div>

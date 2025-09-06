@@ -1,0 +1,76 @@
+<div class="youtube-app-viewport">
+    <div class="youtube-tabs">
+        <button class="yt-tab yt-tab-active" id="yt-tab-home"><i class="material-icons">home</i><span>Home</span></button>
+        <button class="yt-tab" id="yt-tab-library"><i class="material-icons">video_library</i><span>Library</span></button>
+        <button class="yt-tab" id="yt-tab-history"><i class="material-icons">history</i><span>History</span></button>
+        <button class="yt-tab" id="yt-tab-settings"><i class="material-icons">settings</i><span>Settings</span></button>
+    </div>
+    <div class="yt-signin-row" id="yt-signin-row" style="display: flex;">
+        <button id="yt-signin-btn" class="yt-signin-btn"><img src="https://developers.google.com/identity/images/g-logo.png" class="yt-signin-logo"> Sign in with Google</button>
+        <span id="yt-signin-status" class="yt-signin-status"></span>
+    </div>
+    <div class="youtube-tab-content" id="yt-tab-content-home">
+        <div class="youtube-featured" id="youtube-featured"></div>
+        <div class="youtube-search">
+            <input type="text" id="youtube-search-input" placeholder="Search YouTube...">
+            <button id="youtube-search-button"><i class="material-icons">search</i></button>
+        </div>
+        <div class="youtube-results" id="youtube-results"></div>
+        <div class="youtube-player-container" id="youtube-player-container" style="display:none;">
+            <div class="yt-player-responsive">
+                <iframe id="youtube-player" src="about:blank" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="yt-comments-section" id="yt-comments-section">
+                <div class="yt-comments-title">Comments</div>
+                <div id="yt-comments-list">Loading comments...</div>
+                <div class="yt-comment-input-row">
+                    <input id="yt-comment-input" class="yt-comment-input" type="text" maxlength="200" placeholder="Add a public comment..." autocomplete="off" />
+                    <button id="yt-comment-post" class="yt-comment-post-btn"><i class="material-icons">send</i></button>
+                </div>
+                <div id="yt-comment-post-status" class="yt-comment-post-status"></div>
+            </div>
+        </div>
+    </div>
+    <div class="youtube-tab-content" id="yt-tab-content-library" style="display:none;">
+        <div class="yt-section-title">Library (Saved Videos)</div>
+        <div id="yt-library-list">No saved videos yet.</div>
+    </div>
+    <div class="youtube-tab-content" id="yt-tab-content-history" style="display:none;">
+        <div class="yt-section-title">History (Previously Watched)</div>
+        <div id="yt-history-list">No history yet.</div>
+    </div>
+    <div class="youtube-tab-content" id="yt-tab-content-settings" style="display:none;">
+        <div class="yt-section-title">Settings</div>
+        <div class="yt-settings-row">
+            <label>Autoplay</label>
+            <input type="checkbox" id="yt-autoplay-toggle" checked />
+        </div>
+        <div class="yt-settings-row">
+            <label>Theme</label>
+            <select id="yt-theme-select">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+            </select>
+        </div>
+    </div>
+    <div class="yt-account-modal" id="yt-account-modal" style="display:none;">
+        <div class="yt-account-content">
+            <div class="yt-account-header">Account</div>
+            <div class="yt-account-info">
+                <i class="material-icons">account_circle</i>
+                <span>Guest</span>
+            </div>
+            <button id="yt-account-close">Close</button>
+        </div>
+    </div>
+    <div class="yt-oauth-modal" id="yt-oauth-modal" style="display:none;">
+        <div class="yt-oauth-content">
+            <div class="yt-oauth-header">Sign in to YouTube</div>
+            <div class="yt-oauth-body">
+                <input id="yt-oauth-link" class="yt-oauth-link" type="text" readonly value="" />
+                <button id="yt-oauth-copy">Copy Link</button>
+            </div>
+            <button id="yt-oauth-close">Close</button>
+        </div>
+    </div>
+</div>

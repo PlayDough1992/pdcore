@@ -1,0 +1,43 @@
+<div class="app-header">
+    <div class="back-button" id="settings-back-btn"><i class="material-icons">arrow_back</i></div>
+    <span>Settings</span>
+</div>
+<div class="settings-container">
+    <div class="settings-tabs">
+        <button class="settings-tab settings-tab-active" id="settings-tab-general"><i class="material-icons">tune</i><span>General</span></button>
+        <button class="settings-tab" id="settings-tab-wallpaper"><i class="material-icons">wallpaper</i><span>Wallpaper</span></button>
+        <button class="settings-tab" id="settings-tab-sound"><i class="material-icons">volume_up</i><span>Sound</span></button>
+        <button class="settings-tab" id="settings-tab-about"><i class="material-icons">info</i><span>About</span></button>
+    </div>
+    <div class="settings-tab-content" id="settings-tab-content-general">
+        <div class="settings-section-title">General</div>
+        <div class="settings-row">
+            <label>Dark Mode</label>
+            <input type="checkbox" id="settings-darkmode-toggle" checked />
+        </div>
+        <div class="settings-row">
+            <label>Notifications</label>
+            <input type="checkbox" id="settings-notify-toggle" checked />
+        </div>
+    </div>
+    <div class="settings-tab-content" id="settings-tab-content-wallpaper" style="display:none;">
+        <div class="settings-section-title">Wallpaper</div>
+        <div id="wallpaper-options"></div>
+    </div>
+    <div class="settings-tab-content" id="settings-tab-content-sound" style="display:none;">
+        <div class="settings-section-title">Sound</div>
+        <div class="settings-row">
+            <label>Volume</label>
+            <input type="range" id="volume-slider" min="0" max="100" value="100" />
+            <span id="volume-value">100</span>
+        </div>
+    </div>
+    <div class="settings-tab-content" id="settings-tab-content-about" style="display:none;">
+        <div class="settings-section-title">About</div>
+        <div class="settings-about-text">
+            PlayDough Modular Phone v2<br>
+            &copy; 2025 PlayDough
+        </div>
+    </div>
+    <button class="settings-btn" onclick="saveSettings()">Save</button>
+</div>

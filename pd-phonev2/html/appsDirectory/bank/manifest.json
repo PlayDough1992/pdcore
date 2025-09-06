@@ -1,0 +1,8 @@
+{
+  "id": "bank",
+  "name": "Bank",
+  "icon": "bank-icon.png",
+  "html": "bank.html",
+  "js": "bank.js",
+  "css": "bank.css"
+}

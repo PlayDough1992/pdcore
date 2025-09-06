@@ -1,0 +1,8 @@
+{
+  "id": "browser",
+  "name": "Web Browser",
+  "icon": "browser-icon.png",
+  "html": "browser.html",
+  "js": "browser.js",
+  "css": "browser.css"
+}

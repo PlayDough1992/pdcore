@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div id="phone-container">
+        <div id="phone-frame">
+            <div id="phone-header">
+                <span class="time">12:00</span>
+                <span class="icons">
+                    <i class="material-icons">signal_cellular_alt</i>
+                    <i class="material-icons">battery_full</i>
+                </span>
+            </div>
+            <div id="app-grid"></div>
+            <div id="folder-modal" style="display:none;">
+                <div id="folder-content">
+                    <input id="folder-name" placeholder="Folder name" />
+                    <input type="color" id="folder-color" value="#444444" />
+                    <div id="folder-apps"></div>
+                </div>
+            </div>
+            <div id="app-screen"></div>
+            <div id="phone-nav-bar">
+                <button id="nav-home" class="nav-btn"><i class="material-icons">home</i></button>
+                <button id="nav-back" class="nav-btn"><i class="material-icons">arrow_back</i></button>
+                <button id="nav-apps" class="nav-btn"><i class="material-icons">apps</i></button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
