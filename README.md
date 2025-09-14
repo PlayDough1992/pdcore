@@ -2,6 +2,11 @@
 
 PDCore is a comprehensive FiveM server framework designed for roleplay servers. This README documents all available resources, commands, exports, and configuration options.
 
+## Disclaimer
+
+PD Core framework is still in it's development stages, some scripts may not work right off the bat. 
+THIS IS A BETA RELEASE
+
 ## How to deploy
 
 replace the default yaml file contents in txAdmin with this:
