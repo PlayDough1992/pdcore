@@ -21,7 +21,7 @@ tasks:
   # Download default resources
   - action: download_github
     src: https://github.com/citizenfx/cfx-server-data
-    ref: master
+    ref: main
     subpath: resources
     dest: ./resources
 
