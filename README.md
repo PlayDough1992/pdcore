@@ -2,6 +2,40 @@
 
 PDCore is a comprehensive FiveM server framework designed for roleplay servers. This README documents all available resources, commands, exports, and configuration options.
 
+## How to deploy
+
+replace the default yaml file contents in txAdmin with this:
+
+```yaml
+$engine: 3
+$onesync: on
+name: PD Core
+description: PD Core recipe.
+
+tasks: 
+  # Download default resources
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    ref: master
+    subpath: resources
+    dest: ./resources
+
+  # Download PD Core resources
+  - action: download_github
+    src: https://github.com/PlayDough1992/pdcore
+    ref: main
+    dest: ./resources/[pd]
+
+  # Remove the old chat resource
+  - action: remove_path
+    path: ./resources/[gameplay]/chat
+
+  # Download PD Core server.cfg
+  - action: download_file
+    url: https://raw.githubusercontent.com/PlayDough1992/pdcore-serverConfig/main/server.cfg
+    path: ./server.cfg
+```
+
 ## Core Resources
 
 ### pd-core
