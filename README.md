@@ -100,6 +100,7 @@ Handles cash pickups, drops and transfers between players.
 | `/spawncash [amount] [x] [y] [z]` | Spawn cash at coordinates | Admin |
 | `/cashhere [amount]` | Spawn cash at your position | Admin |
 | `/givecash [id] [amount]` | Give cash to another player | Everyone |
+| `/givecash` | Opens UI for giving cash -- User friendly | Everyone |
 
 #### Configuration
 - `config.lua` controls cash drop frequency, amounts, and locations
